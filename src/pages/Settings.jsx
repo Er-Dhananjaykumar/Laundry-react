@@ -1,12 +1,10 @@
 import AdminLayout from "../layouts/AdminLayout";
 
-function Reports(){
+function Settings(){
     return(
         <AdminLayout>
-            <h1>Reports Page</h1>
+            <h1>Settings</h1>
         </AdminLayout>
-        
     );
-
 }
-export default Reports;
+ export default Settings;

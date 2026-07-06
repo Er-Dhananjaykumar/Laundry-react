@@ -6,6 +6,7 @@ import Customers from "./pages/Customers";
 import Bookings from "./pages/Bookings";
 import Payments from "./pages/Payments";
 import Reports from "./pages/Reports";
+import Settings from "./pages/Settings";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/payments" element={<Payments />} />
 
                 <Route path="/reports" element={<Reports />} />
+                <Route path="/settings" element={<Settings />} />
 
             </Routes>
 

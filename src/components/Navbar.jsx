@@ -1,8 +1,8 @@
 function Navbar() {
   return (
-    <nav>
-      <h2>Laundry Management</h2>
-    </nav>
+    <div className="navbar">
+      <h2>Laundry Management System</h2>
+    </div>
   );
 }
 

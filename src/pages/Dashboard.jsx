@@ -1,10 +1,10 @@
+import AdminLayout from "../layouts/AdminLayout";
+
 function Dashboard() {
   return (
-    <>
-    <h1>Dashboard Page</h1>
-    <p>Manage all Dashboard here.</p>
-    </>
-    
+    <AdminLayout>
+      <h1>Dashboard</h1>
+    </AdminLayout>
   );
 }
 
