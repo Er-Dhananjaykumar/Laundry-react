@@ -1,30 +1,38 @@
-import Navbar from "./components/Navbar";
-import Greeting from "./components/Greeting";
-import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Customers from "./pages/Customers";
+import Bookings from "./pages/Bookings";
+import Payments from "./pages/Payments";
+import Reports from "./pages/Reports";
 
 function App() {
-  return (
-    <>
-      <Navbar />
 
-      <Greeting
-        name="Dhananjay Kumar"
-        role="Software Developer"
-      />
+    return (
 
-      <Greeting
-        name="Rahul"
-        role="Frontend Developer"
-      />
+        <BrowserRouter>
 
-      <Greeting
-        name="Aman"
-        role="Backend Developer"
-      />
+            <Routes>
 
-      <Footer />
-    </>
-  );
+                <Route path="/" element={<Login />} />
+
+                <Route path="/dashboard" element={<Dashboard />} />
+
+                <Route path="/customers" element={<Customers />} />
+
+                <Route path="/bookings" element={<Bookings />} />
+
+                <Route path="/payments" element={<Payments />} />
+
+                <Route path="/reports" element={<Reports />} />
+
+            </Routes>
+
+        </BrowserRouter>
+
+    );
+
 }
 
 export default App;
