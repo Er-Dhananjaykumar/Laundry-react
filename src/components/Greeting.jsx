@@ -1,8 +1,8 @@
-function Greeting() {
+function Greeting({ name, role }) {
   return (
     <div>
-      <h2>Hello Dhananjay 👋</h2>
-      <p>Welcome to React.</p>
+      <h2>Hello, {name} 👋</h2>
+      <p>Role: {role}</p>
     </div>
   );
 }

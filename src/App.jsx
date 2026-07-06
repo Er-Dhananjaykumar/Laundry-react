@@ -4,11 +4,26 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div>
+    <>
       <Navbar />
-      <Greeting />
+
+      <Greeting
+        name="Dhananjay Kumar"
+        role="Software Developer"
+      />
+
+      <Greeting
+        name="Rahul"
+        role="Frontend Developer"
+      />
+
+      <Greeting
+        name="Aman"
+        role="Backend Developer"
+      />
+
       <Footer />
-    </div>
+    </>
   );
 }
 
