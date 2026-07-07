@@ -1,7 +1,11 @@
 import { useState } from "react";
 import "../styles/login.css";
+import { login } from "../services/authService";
+import { APP_NAME } from "../utils/constants";
 
 function Login() {
+
+    
 
     const [email, setEmail] = useState("");
 
@@ -62,7 +66,7 @@ function Login() {
                 onSubmit={handleSubmit}
             >
 
-                <h1>🧺 Laundry Management</h1>
+                <h1>{APP_NAME}</h1>
 
                 <p>Welcome Back</p>
 
