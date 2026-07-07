@@ -1,50 +1,59 @@
 import { useState } from "react";
 import CustomerTable from "../components/Customer/CustomerTable";
+import CustomerForm from "../components/Customer/CustomerForm";
 
 function Customers() {
 
-  const [customers] = useState([
-
+  const [customers, setCustomers] = useState([
     {
-      id: 1,
-      name: "Rahul",
-      mobile: "9876543210",
-      email: "rahul@gmail.com",
-      status: "Active"
+        id: 1,
+        name: "Rahul",
+        mobile: "9876543210",
+        email: "rahul@gmail.com",
+        status: "Active"
     },
     {
-      id: 2,
-      name: "Aman",
-      mobile: "9123456780",
-      email: "aman@gmail.com",
-      status: "Active"
-    },
-    {
-      id: 3,
-      name: "Neha",
-      mobile: "9988776655",
-      email: "neha@gmail.com",
-      status: "Inactive"
+        id: 2,
+        name: "Aman",
+        mobile: "9123456780",
+        email: "aman@gmail.com",
+        status: "Active"
     }
+]);
 
-  ]);
+
+function addCustomer(customer) {
+
+    setCustomers((prevCustomers) => [
+
+        ...prevCustomers,
+
+        customer
+
+    ]);
+
+}
 
   return (
     <>
       <h1>Customers</h1>
-      <div className="customer-toolbar">
 
-        <input
-          type="text"
-          placeholder="Search Customer..."
-        />
+<div className="customer-toolbar">
 
-        <button>
-          + Add Customer
-        </button>
+    <input
+        type="text"
+        placeholder="Search Customer..."
+    />
 
-      </div>
-      <CustomerTable customers={customers} />
+    <button>
+        + Add Customer
+    </button>
+
+</div>
+
+<CustomerForm onSave={addCustomer} />
+
+<CustomerTable customers={customers} />
     </>
   );
 }
