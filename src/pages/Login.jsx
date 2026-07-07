@@ -7,13 +7,49 @@ function Login() {
 
     const [password, setPassword] = useState("");
 
+    const [showPassword, setShowPassword] = useState(false);
+
+    const [remember, setRemember] = useState(false);
+
+    const [loading, setLoading] = useState(false);
+
+    const [error, setError] = useState("");
+
     function handleSubmit(e) {
 
         e.preventDefault();
 
-        console.log(email);
+        setError("");
 
-        console.log(password);
+        if (email === "") {
+            setError("Email is required");
+            return;
+        }
+
+        if (password === "") {
+            setError("Password is required");
+            return;
+        }
+
+        setLoading(true);
+
+        setTimeout(() => {
+
+            console.log({
+
+                email,
+
+                password,
+
+                remember
+
+            });
+
+            setLoading(false);
+
+            alert("Login Success (Dummy)");
+
+        }, 1500);
 
     }
 
@@ -26,9 +62,16 @@ function Login() {
                 onSubmit={handleSubmit}
             >
 
-                <h1>Laundry Management</h1>
+                <h1>🧺 Laundry Management</h1>
 
                 <p>Welcome Back</p>
+
+                {
+                    error &&
+                    <div className="error">
+                        {error}
+                    </div>
+                }
 
                 <label>Email</label>
 
@@ -36,31 +79,74 @@ function Login() {
 
                     type="email"
 
-                    placeholder="Enter Email"
-
                     value={email}
 
                     onChange={(e) => setEmail(e.target.value)}
+
+                    placeholder="Enter Email"
 
                 />
 
                 <label>Password</label>
 
-                <input
+                <div className="password-box">
 
-                    type="password"
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
 
-                    placeholder="Enter Password"
+                    <button
+                        type="button"
+                        className="eye-btn"
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? "🙈" : "👁️"}
+                    </button>
 
-                    value={password}
+                </div>
 
-                    onChange={(e) => setPassword(e.target.value)}
+                <div className="login-options">
 
-                />
+                    <label>
 
-                <button type="submit">
+                        <input
 
-                    Login
+                            type="checkbox"
+
+                            checked={remember}
+
+                            onChange={(e) => setRemember(e.target.checked)}
+
+                        />
+
+                        Remember Me
+
+                    </label>
+
+                    <a href="#">Forgot Password?</a>
+
+                </div>
+
+                <button
+                    className="login-btn"
+                    disabled={loading}
+                >
+
+                    {
+                        loading
+
+                            ?
+
+                            "Logging in..."
+
+                            :
+
+                            "Login"
+
+                    }
 
                 </button>
 
