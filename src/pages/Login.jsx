@@ -1,12 +1,18 @@
 import { useState } from "react";
 import "../styles/login.css";
+import { useAuth } from "../context/AuthContext";
 import { login } from "../services/authService";
 import { APP_NAME } from "../utils/constants";
+
+import { useNavigate } from "react-router-dom";
+
+
 
 function Login() {
 
     
-
+    const auth = useAuth();
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
 
     const [password, setPassword] = useState("");
@@ -21,44 +27,40 @@ function Login() {
 
     function handleSubmit(e) {
 
-        e.preventDefault();
+    e.preventDefault();
 
-        setError("");
+    setError("");
 
-        if (email === "") {
-            setError("Email is required");
-            return;
-        }
-
-        if (password === "") {
-            setError("Password is required");
-            return;
-        }
-
-        setLoading(true);
-
-        setTimeout(() => {
-
-            console.log({
-
-                email,
-
-                password,
-
-                remember
-
-            });
-
-            setLoading(false);
-
-            alert("Login Success (Dummy)");
-
-        }, 1500);
-
+    if (!email.trim()) {
+        setError("Email is required");
+        return;
     }
+
+    if (!password.trim()) {
+        setError("Password is required");
+        return;
+    }
+
+    setLoading(true);
+
+    setTimeout(() => {
+
+        auth.login({
+            name: "Dhananjay",
+            email: email
+        });
+
+        setLoading(false);
+
+        navigate("./dashboard");
+
+    }, 1000);
+
+}
 
     return (
 
+        
         <div className="login-container">
 
             <form

@@ -1,8 +1,4 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -13,36 +9,33 @@ import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
 
 import AdminLayout from "./layouts/AdminLayout";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-  return (
-    <BrowserRouter>
+    return (
+        <Routes>
 
-      <Routes>
+            {/* Login */}
+            <Route path="/" element={<Login />} />
 
-        {/* Login */}
-        <Route path="/" element={<Login />} />
+            {/* Protected Routes */}
+            <Route
+                element={
+                    <ProtectedRoute>
+                        <AdminLayout />
+                    </ProtectedRoute>
+                }
+            >
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/customers" element={<Customers />} />
+                <Route path="/bookings" element={<Bookings />} />
+                <Route path="/payments" element={<Payments />} />
+                <Route path="/reports" element={<Reports />} />
+                <Route path="/settings" element={<Settings />} />
+            </Route>
 
-        {/* Admin Layout */}
-        <Route element={<AdminLayout />}>
-
-          <Route path="/dashboard" element={<Dashboard />} />
-
-          <Route path="/customers" element={<Customers />} />
-
-          <Route path="/bookings" element={<Bookings />} />
-
-          <Route path="/payments" element={<Payments />} />
-
-          <Route path="/reports" element={<Reports />} />
-          <Route path="/settings" element={<Settings/>}/>
-
-        </Route>
-
-      </Routes>
-
-    </BrowserRouter>
-  );
+        </Routes>
+    );
 }
 
 export default App;

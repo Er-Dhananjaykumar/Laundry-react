@@ -1,0 +1,43 @@
+.customer-toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:20px 0;
+}
+
+.customer-toolbar input{
+    width:300px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+.customer-toolbar button{
+    background:#1976d2;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.customer-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+.customer-table th{
+    background:#1976d2;
+    color:white;
+    padding:12px;
+}
+
+.customer-table td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+}
+
+.customer-table tr:hover{
+    background:#f8f9fa;
+}
