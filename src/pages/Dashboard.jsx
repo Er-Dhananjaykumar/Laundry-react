@@ -1,10 +1,9 @@
-import AdminLayout from "../layouts/AdminLayout";
-
 function Dashboard() {
   return (
-    <AdminLayout>
+    <>
       <h1>Dashboard</h1>
-    </AdminLayout>
+      <p>Welcome to Laundry Management Dashboard.</p>
+    </>
   );
 }
 

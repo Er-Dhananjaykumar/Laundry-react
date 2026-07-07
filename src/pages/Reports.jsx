@@ -1,10 +1,9 @@
-import AdminLayout from "../layouts/AdminLayout";
 
 function Reports(){
     return(
-        <AdminLayout>
+        <>
             <h1>Reports Page</h1>
-        </AdminLayout>
+        </>
         
     );
 

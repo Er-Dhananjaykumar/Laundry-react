@@ -1,4 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -8,33 +12,37 @@ import Payments from "./pages/Payments";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
 
+import AdminLayout from "./layouts/AdminLayout";
+
 function App() {
+  return (
+    <BrowserRouter>
 
-    return (
+      <Routes>
 
-        <BrowserRouter>
+        {/* Login */}
+        <Route path="/" element={<Login />} />
 
-            <Routes>
+        {/* Admin Layout */}
+        <Route element={<AdminLayout />}>
 
-                <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
 
-                <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/customers" element={<Customers />} />
 
-                <Route path="/customers" element={<Customers />} />
+          <Route path="/bookings" element={<Bookings />} />
 
-                <Route path="/bookings" element={<Bookings />} />
+          <Route path="/payments" element={<Payments />} />
 
-                <Route path="/payments" element={<Payments />} />
+          <Route path="/reports" element={<Reports />} />
+          <Route path="/settings" element={<Settings/>}/>
 
-                <Route path="/reports" element={<Reports />} />
-                <Route path="/settings" element={<Settings />} />
+        </Route>
 
-            </Routes>
+      </Routes>
 
-        </BrowserRouter>
-
-    );
-
+    </BrowserRouter>
+  );
 }
 
 export default App;
