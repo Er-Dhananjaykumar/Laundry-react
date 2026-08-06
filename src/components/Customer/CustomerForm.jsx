@@ -1,32 +1,34 @@
 import { useState } from "react";
 
-function CustomerForm({ onSave }) {
+function CustomerForm({ onSave, onCancel }) {
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [email, setEmail] = useState("");
 
-    const [name, setName] = useState("");
-    const [mobile, setMobile] = useState("");
-    const [email, setEmail] = useState("");
+  function handleSubmit(e) {
+    e.preventDefault();
 
-    function handleSubmit(e) {
+    const trimmedName = name.trim();
+    const trimmedMobile = mobile.trim();
+    const trimmedEmail = email.trim();
 
-        e.preventDefault();
-
-        if (!name || !mobile || !email) {
-            alert("Please fill all fields");
-            return;
-        }
-
-        onSave({
-            id: Date.now(),
-            name,
-            mobile,
-            email,
-            status: "Active"
-        });
-
-        setName("");
-        setMobile("");
-        setEmail("");
+    if (!trimmedName || !trimmedMobile || !trimmedEmail) {
+      alert("Please fill all fields");
+      return;
     }
+
+    onSave({
+      id: Date.now(),
+      name: trimmedName,
+      mobile: trimmedMobile,
+      email: trimmedEmail,
+      status: "Active",
+    });
+
+    setName("");
+    setMobile("");
+    setEmail("");
+  }
 
     return (
         <form onSubmit={handleSubmit} className="customer-form">
@@ -52,9 +54,24 @@ function CustomerForm({ onSave }) {
                 onChange={(e) => setEmail(e.target.value)}
             />
 
-            <button type="submit">
-                Save Customer
-            </button>
+            <div className="form-buttons">
+
+                <button
+                    type="submit"
+                    className="save-btn"
+                >
+                    Save Customer
+                </button>
+
+                <button
+                    type="button"
+                    className="cancel-btn"
+                    onClick={onCancel}
+                >
+                    Cancel
+                </button>
+
+            </div>
 
         </form>
     );

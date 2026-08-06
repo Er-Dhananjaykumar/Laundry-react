@@ -1,62 +1,51 @@
 import { useState } from "react";
 import "../styles/login.css";
 import { useAuth } from "../context/AuthContext";
-import { login } from "../services/authService";
 import { APP_NAME } from "../utils/constants";
-
 import { useNavigate } from "react-router-dom";
 
 
 
 function Login() {
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [remember, setRemember] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-    
-    const auth = useAuth();
-    const navigate = useNavigate();
-    const [email, setEmail] = useState("");
-
-    const [password, setPassword] = useState("");
-
-    const [showPassword, setShowPassword] = useState(false);
-
-    const [remember, setRemember] = useState(false);
-
-    const [loading, setLoading] = useState(false);
-
-    const [error, setError] = useState("");
-
-    function handleSubmit(e) {
-
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     setError("");
 
-    if (!email.trim()) {
-        setError("Email is required");
-        return;
+    const trimmedEmail = email.trim();
+    const trimmedPassword = password.trim();
+
+    if (!trimmedEmail) {
+      setError("Email is required");
+      return;
     }
 
-    if (!password.trim()) {
-        setError("Password is required");
-        return;
+    if (!trimmedPassword) {
+      setError("Password is required");
+      return;
     }
 
     setLoading(true);
 
     setTimeout(() => {
+      auth.login({
+        name: "Dhananjay",
+        email: trimmedEmail,
+      });
 
-        auth.login({
-            name: "Dhananjay",
-            email: email
-        });
-
-        setLoading(false);
-
-        navigate("./dashboard");
-
+      setLoading(false);
+      navigate("/dashboard");
     }, 1000);
-
-}
+  };
 
     return (
 
@@ -107,7 +96,7 @@ function Login() {
                     <button
                         type="button"
                         className="eye-btn"
-                        onClick={() => setShowPassword(!showPassword)}
+                        onClick={() => setShowPassword((prev) => !prev)}
                     >
                         {showPassword ? "🙈" : "👁️"}
                     </button>

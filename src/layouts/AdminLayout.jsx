@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import Footer from "../components/Footer";
 
 function AdminLayout() {
   return (
@@ -12,8 +13,10 @@ function AdminLayout() {
 
         <div className="content">
           <Outlet />
+         
         </div>
       </div>
+       <Footer />
     </>
   );
 }

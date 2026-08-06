@@ -1,16 +1,5 @@
-import {
-    NavLink
-} from "react-router-dom";
-
-import {
-    FaHome,
-    FaUsers,
-    FaClipboardList,
-    FaMoneyBill,
-    FaChartBar,
-    FaUser,
-    FaCog
-} from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import { FaHome, FaUsers, FaClipboardList, FaMoneyBill, FaChartBar, FaUser, FaCog } from "react-icons/fa";
 
 function Sidebar() {
 
