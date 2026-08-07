@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { FaHome, FaUsers, FaClipboardList, FaMoneyBill, FaFileInvoiceDollar, FaTruck, FaChartBar, FaUser, FaCog } from "react-icons/fa";
+import { FaHome, FaUsers, FaClipboardList, FaMoneyBill, FaFileInvoiceDollar, FaTruck, FaUserTie, FaChartBar, FaUser, FaCog } from "react-icons/fa";
 
 function Sidebar() {
 
@@ -118,6 +118,22 @@ function Sidebar() {
                         <FaTruck />
 
                         Delivery
+
+                    </NavLink>
+
+                </li>
+
+                <li>
+
+                    <NavLink
+                        to="/employees"
+                        className={({ isActive }) =>
+                            isActive ? "active" : ""
+                        }
+                    >
+                        <FaUserTie />
+
+                        Employees
 
                     </NavLink>
 
