@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Customers from "./pages/Customers";
 import Services from "./pages/Services";
+import Items from "./pages/Items";
 import Bookings from "./pages/Bookings";
 import Payments from "./pages/Payments";
 import Reports from "./pages/Reports";
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/customers" element={<Customers />} />
                 <Route path="/services" element={<Services />} />
+                <Route path="/items" element={<Items />} />
                 <Route path="/bookings" element={<Bookings />} />
                 <Route path="/payments" element={<Payments />} />
                 <Route path="/reports" element={<Reports />} />
