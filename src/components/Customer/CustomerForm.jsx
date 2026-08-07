@@ -1,80 +1,130 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function CustomerForm({ onSave, onCancel }) {
-  const [name, setName] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [email, setEmail] = useState("");
+const initialFormState = {
+  name: "",
+  mobile: "",
+  email: "",
+  address: "",
+  city: "",
+  pincode: "",
+  status: "Active",
+};
 
-  function handleSubmit(e) {
+function CustomerForm({ initialValues, onSave, onCancel }) {
+  const [formData, setFormData] = useState(initialFormState);
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    if (initialValues) {
+      setFormData({ ...initialFormState, ...initialValues });
+    } else {
+      setFormData(initialFormState);
+    }
+    setErrors({});
+  }, [initialValues]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
+
+  const validate = () => {
+    const nextErrors = {};
+    const trimmedData = {
+      name: formData.name.trim(),
+      mobile: formData.mobile.trim(),
+      email: formData.email.trim(),
+      address: formData.address.trim(),
+      city: formData.city.trim(),
+      pincode: formData.pincode.trim(),
+      status: formData.status.trim(),
+    };
+
+    if (!trimmedData.name) nextErrors.name = "Customer name is required";
+    if (!trimmedData.mobile) nextErrors.mobile = "Mobile number is required";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedData.email)) nextErrors.email = "Valid email is required";
+    if (!trimmedData.address) nextErrors.address = "Address is required";
+    if (!trimmedData.city) nextErrors.city = "City is required";
+    if (!/^\d{6}$/.test(trimmedData.pincode)) nextErrors.pincode = "Pincode must be 6 digits";
+    if (!trimmedData.status) nextErrors.status = "Status is required";
+
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const trimmedName = name.trim();
-    const trimmedMobile = mobile.trim();
-    const trimmedEmail = email.trim();
-
-    if (!trimmedName || !trimmedMobile || !trimmedEmail) {
-      alert("Please fill all fields");
+    if (!validate()) {
       return;
     }
 
     onSave({
-      id: Date.now(),
-      name: trimmedName,
-      mobile: trimmedMobile,
-      email: trimmedEmail,
-      status: "Active",
+      ...formData,
+      name: formData.name.trim(),
+      mobile: formData.mobile.trim(),
+      email: formData.email.trim(),
+      address: formData.address.trim(),
+      city: formData.city.trim(),
+      pincode: formData.pincode.trim(),
+      status: formData.status.trim(),
     });
+  };
 
-    setName("");
-    setMobile("");
-    setEmail("");
-  }
+  return (
+    <form onSubmit={handleSubmit} className="customer-form">
+      <div className="form-grid">
+        <div>
+          <input name="name" placeholder="Customer Name" value={formData.name} onChange={handleChange} />
+          {errors.name && <span className="form-error">{errors.name}</span>}
+        </div>
 
-    return (
-        <form onSubmit={handleSubmit} className="customer-form">
+        <div>
+          <input name="mobile" placeholder="Mobile Number" value={formData.mobile} onChange={handleChange} />
+          {errors.mobile && <span className="form-error">{errors.mobile}</span>}
+        </div>
 
-            <input
-                type="text"
-                placeholder="Customer Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
+        <div>
+          <input name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} />
+          {errors.email && <span className="form-error">{errors.email}</span>}
+        </div>
 
-            <input
-                type="text"
-                placeholder="Mobile Number"
-                value={mobile}
-                onChange={(e) => setMobile(e.target.value)}
-            />
+        <div>
+          <input name="address" placeholder="Address" value={formData.address} onChange={handleChange} />
+          {errors.address && <span className="form-error">{errors.address}</span>}
+        </div>
 
-            <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
+        <div>
+          <input name="city" placeholder="City" value={formData.city} onChange={handleChange} />
+          {errors.city && <span className="form-error">{errors.city}</span>}
+        </div>
 
-            <div className="form-buttons">
+        <div>
+          <input name="pincode" placeholder="Pincode" value={formData.pincode} onChange={handleChange} />
+          {errors.pincode && <span className="form-error">{errors.pincode}</span>}
+        </div>
 
-                <button
-                    type="submit"
-                    className="save-btn"
-                >
-                    Save Customer
-                </button>
+        <div>
+          <select name="status" value={formData.status} onChange={handleChange}>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+          {errors.status && <span className="form-error">{errors.status}</span>}
+        </div>
+      </div>
 
-                <button
-                    type="button"
-                    className="cancel-btn"
-                    onClick={onCancel}
-                >
-                    Cancel
-                </button>
+      <div className="form-buttons">
+        <button type="submit" className="save-btn">
+          Save Customer
+        </button>
 
-            </div>
-
-        </form>
-    );
+        <button type="button" className="cancel-btn" onClick={onCancel}>
+          Cancel
+        </button>
+      </div>
+    </form>
+  );
 }
 
 export default CustomerForm;
