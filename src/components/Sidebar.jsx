@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { FaHome, FaUsers, FaClipboardList, FaMoneyBill, FaChartBar, FaUser, FaCog } from "react-icons/fa";
+import { FaHome, FaUsers, FaClipboardList, FaMoneyBill, FaFileInvoiceDollar, FaChartBar, FaUser, FaCog } from "react-icons/fa";
 
 function Sidebar() {
 
@@ -70,6 +70,22 @@ function Sidebar() {
                         <FaMoneyBill />
 
                         Payments
+
+                    </NavLink>
+
+                </li>
+
+                <li>
+
+                    <NavLink
+                        to="/invoices"
+                        className={({ isActive }) =>
+                            isActive ? "active" : ""
+                        }
+                    >
+                        <FaFileInvoiceDollar />
+
+                        Invoices
 
                     </NavLink>
 

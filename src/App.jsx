@@ -7,6 +7,7 @@ import Services from "./pages/Services";
 import Items from "./pages/Items";
 import Bookings from "./pages/Bookings";
 import Payments from "./pages/Payments";
+import Invoices from "./pages/Invoices";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
 
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/items" element={<Items />} />
                 <Route path="/bookings" element={<Bookings />} />
                 <Route path="/payments" element={<Payments />} />
+                <Route path="/invoices" element={<Invoices />} />
                 <Route path="/reports" element={<Reports />} />
                 <Route path="/settings" element={<Settings />} />
             </Route>

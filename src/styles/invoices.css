@@ -1,0 +1,145 @@
+.invoice-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.invoice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #1976d2;
+  color: white;
+}
+
+.secondary-btn {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.card-panel {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.invoice-shell {
+  overflow-x: auto;
+}
+
+.invoice-preview {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.professional-layout {
+  font-family: Arial, sans-serif;
+}
+
+.thermal-layout {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  border: 2px dashed #111827;
+}
+
+.invoice-header {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.brand-block h2,
+.invoice-meta h3,
+.customer-block h4,
+.gst-block h4,
+.notes-block h4 {
+  margin: 0 0 6px;
+}
+
+.brand-block p,
+.invoice-meta p,
+.customer-block p,
+.gst-block p,
+.notes-block p {
+  margin: 2px 0;
+  color: #374151;
+}
+
+.invoice-items table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.invoice-items th,
+.invoice-items td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.invoice-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 12px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-row {
+  font-size: 1.05rem;
+  color: #111827;
+}
+
+.gst-block,
+.notes-block {
+  margin-top: 8px;
+}
+
+.signature {
+  margin-top: 16px;
+  text-align: right;
+  font-weight: 600;
+}
+
+.thermal-note {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .invoice-header {
+    grid-template-columns: 1fr;
+  }
+
+  .invoice-actions {
+    width: 100%;
+  }
+
+  .invoice-actions button {
+    flex: 1 1 100%;
+  }
+}
