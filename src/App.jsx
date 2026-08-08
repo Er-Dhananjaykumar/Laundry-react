@@ -15,6 +15,7 @@ import Inventory from "./pages/Inventory";
 import Vendor from "./pages/Vendor";
 import Purchase from "./pages/Purchase";
 import Reports from "./pages/Reports";
+import Notifications from "./pages/Notifications";
 import Settings from "./pages/Settings";
 
 import AdminLayout from "./layouts/AdminLayout";
@@ -49,6 +50,7 @@ function App() {
                 <Route path="/vendor" element={<Vendor />} />
                 <Route path="/purchase" element={<Purchase />} />
                 <Route path="/reports" element={<Reports />} />
+                <Route path="/notifications" element={<Notifications />} />
                 <Route path="/settings" element={<Settings />} />
             </Route>
 

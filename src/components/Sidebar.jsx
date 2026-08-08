@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { FaHome, FaUsers, FaClipboardList, FaMoneyBill, FaFileInvoiceDollar, FaTruck, FaUserTie, FaBoxOpen, FaStore, FaShoppingCart, FaChartBar, FaUser, FaCog } from "react-icons/fa";
+import { FaHome, FaUsers, FaClipboardList, FaMoneyBill, FaFileInvoiceDollar, FaTruck, FaUserTie, FaBoxOpen, FaStore, FaShoppingCart, FaChartBar, FaBell, FaUser, FaCog } from "react-icons/fa";
 
 function Sidebar() {
 
@@ -198,6 +198,22 @@ function Sidebar() {
                         <FaChartBar />
 
                         Reports
+
+                    </NavLink>
+
+                </li>
+
+                <li>
+
+                    <NavLink
+                        to="/notifications"
+                        className={({ isActive }) =>
+                            isActive ? "active" : ""
+                        }
+                    >
+                        <FaBell />
+
+                        Notifications
 
                     </NavLink>
 
